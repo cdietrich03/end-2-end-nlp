@@ -9,7 +9,7 @@
 1. Clone the repo into an environment. The code has been tested in Google Colab, so it is known to work there.
 2. Ensure the config.yaml file contains the correct file paths for the data.
 3. Run the Jupyter Notebook cell to download the requirements from the requirements.txt. (Will take 2-3 minutes)
-4. After running the second Jupyter Notebook cell, an interface and a link will pop up. Either one can be used to run the app.
+4. Run the third Jupyter Notebook cell, and an interface and a link will pop up. Either one can be used to run the app.
 5. Enter your generated Hugging Face token into the box when prompted to do so.
 6. Click "Initialize RAG App" to load the system. (Note: This will take around 5 minutes.)
 7. After the app has initialized, there will be a green check with a message that says "Initialization successful! You can now prompt the application."
