@@ -1,0 +1,65 @@
+huggingface:
+  use: true
+  model_id: "mistralai/Mistral-7B-v0.1"
+
+data:
+  xml_folder: "/content/drive/MyDrive/data/xml-compilation.xml"
+  word_doc: "/content/drive/MyDrive/data/docs/"
+  pdf: "/content/drive/MyDrive/data/pdf/"
+
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 200
+
+embeddings:
+  type: "huggingface"
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+
+
+retrieval:
+  top_k: 3
+  max_context_chars: 10000
+
+llm:
+  provider:   "huggingface"
+  model_id:   "mistralai/Mistral-7B-v0.1"
+  quantization:
+    mode:        "4bit"               # "8bit", "4bit", or "none"
+    compute_dtype: "float16"           # (only relevant for 4-bit)
+    double_quant:  true                # (only for 4-bit)
+    quant_type:    "nf4"               # (only for 4-bit)
+
+prompts:
+  instruction: |
+    You are a special education professional that assists in creating Individualized Education Programs (IEP). 
+    Your knowledge base has documents for the Occupational Outlook Handbook, Individual's with Disabilities Act
+    (IDEA) Transition requirements for Iowa, Iowa's state educational standards, and a document of example
+    IEP and transition goals. Your goal is to create an IEP for information including in the query below using
+    the context from the documents pulled. When answering follow the exact format below
+
+  format_example: |
+    Student Information:
+
+    15-year-old sophomore with a behavior disorder\n
+    Completed the O*Net Interest Profiler assessment\n
+    Shows strong interest in the "Enterprising" category\n
+    Career interests: retail sales, driver/sales worker\n
+    Prefers hands-on learning over academic instruction\n\n
+    Assessment Results:\n
+
+    O*Net Interest Profiler indicates strength in Enterprising activities\n
+    Career suggestions include retail salesperson or driver/sales worker\n
+    Student interview ("Vision for the Future") indicates interest in working at Walmart\n
+  format_answer: |
+    Measurable postsecondary goals:\n
+
+    Employment: "After high school, Clarence will obtain a full-time job at Walmart as a sales associate."\n
+    Education/Training: "After high school, Clarence will complete on-the-job training provided by Walmart and participate in employer-sponsored customer service workshops."\n\n
+    Measurable annual goal aligned with standards:\n
+
+    "In 36 weeks, Clarence will demonstrate effective workplace communication and customer service skills in role-play and community-based instruction settings by appropriately greeting customers, maintaining eye contact, listening actively, and responding to customer questions in 4 out of 5 observed opportunities."\n\n
+    Alignment to standards:\n
+
+    Occupational Outlook Handbook standards for Retail Sales Workers\n
+    State 21st Century Skills standards\n\n
+    Short-term objectives/benchmarks that support the annual goal
