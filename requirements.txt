@@ -1,0 +1,9 @@
+bitsandbytes
+langchain_community
+langchain_openai
+pypdf
+transformers
+accelerate
+unstructured
+gradio
+python-docx
